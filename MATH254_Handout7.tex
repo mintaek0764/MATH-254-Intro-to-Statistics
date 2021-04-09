@@ -1,0 +1,299 @@
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools}
+\usepackage{multirow,url,float}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   	\framebox{
+   		\vbox{\vspace{2mm}
+   			\hbox to 6.28in { {\bf MATH 254: Introduction to Statistics
+   					\hfill #3} }
+   			\vspace{4mm}
+   			\hbox to 6.28in { {\Large \hfill Lesson #1: #2  \hfill} }
+   			\vspace{2mm}
+   			\hbox to 6.28in { {\hfill Corresponding Workbook Module: #4} }
+   			\vspace{2mm}}
+   	}
+   \end{center}
+   \markboth{Handout #1}{Handout #1}
+
+   %{\bf Note}: {\it LaTeX template courtesy of UC Berkeley EECS dept.}
+
+   %{\bf Disclaimer}: {\it These notes have not been subjected to the usual scrutiny reserved for formal publications.  They may be distributed outside this class only with the permission of the instructor.}
+   %\vspace*{4mm}
+   \vspace*{-4mm}
+}
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{example}{Example}[lecnum]
+\newtheorem{exercise}{Exercise}[lecnum]
+
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{definition}[theorem]{Definition}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+
+\begin{document}
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{7}{Tests for Independence and Goodness-of-Fit}{Mintaek Lee}{7}
+%\footnotetext{These notes are partially based on those of Nigel Mansell.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This needs to be improved for accuracy and accesibility %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% **** YOUR NOTES GO HERE:
+\begin{example} (\textit{The Chi-square test for independence}) \\
+	Mintaek is a member of the penguin enthusiasts club. He became curious whether preference on penguin species is independent of the member's gender. He surveys 200 members of the club on their favorite penguin species (out of Emperor, King, and Gentoo penguins) and summarizes the results in the table below. Does the evidence suggest that the preference on penguin species is independent of the member's gender? Use the appropriate statistical methods and set up the hypotheses that best match Mintaek's interests. Use the significance level of $\alpha = 0.05$.
+	\begin{table}[h]
+		\centering
+		\vspace{-10pt}
+		\begin{tabular}{l|lll|l}
+			& Emperor Penguin & King Penguin & Gentoo Penguin & Total \\ \hline
+			Men & 50 & 30 & 40 & 120 \\
+			Women & 20 & 30 & 30 & 80 \\ \hline
+			Total & 70 & 60 & 70 & 200
+		\end{tabular}
+	\end{table}
+\end{example}
+
+\vspace{-25pt}
+This question is asking you to check if the preference on penguin species (\textit{a categorical variable taking on values: Emperor, King, or Gentoo}) is independent of the member's gender (\textit{a categorical variable taking on values: men and women}). Note that \textit{preference on penguin species} and \textit{member's gender} are two variables of interest here. In this case, we need to use the Chi-square test for independence. Note that you may only use this test when you have two rows in your data. If you have 3 or more rows in your data, you need to use the Chi-square test for homogeneity instead. For more information, see the workbook page 214.
+
+\noindent \textbf{Step 1}: The hypotheses are:
+\vspace{-10pt}
+\begin{itemize}\itemsep-0.2em
+	\item $H_0$: preference on penguin species (\textit{a categorical variable taking on values: Emperor, King, or Gentoo}) and the member's gender (\textit{a categorical variable taking on values: men and women}) are independent
+	\item $H_A$: preference on penguin species is independent of the member's gender
+\end{itemize}
+\vspace{-10 pt}
+
+\noindent \textbf{Step 2}: Conditions are
+\vspace{-10pt}
+\begin{itemize}\itemsep-0.2em
+	\item \textbf{Assume} that Mintaek randomly selected 200 penguin enthusiasts club members. We are assuming it because the question simply stated he surveyed 200 members.
+	\item We see that all of the cells are larger than 5 (50, 30, 40, 20, 30, and 30).
+	\item Population size is at least 10 times the sample size (assuming the penguin enthusiasts club has at least 2000 members).
+\end{itemize}
+\vspace{-10 pt}
+
+Since all conditions are met, we can use the Chi-square test for independence.
+
+\noindent \textbf{Step 3}: To calculate the test statistic $\mathcal{X}^2$, we first calculate the expected counts using row totals and column totals. Equation for the expected counts is: \[ \text{Expected Count} = \dfrac{\text{Row Total} \times \text{Column Total}}{\text{Grand Total}} \]
+
+We then find the expected counts as:
+
+\begin{table}[h]
+	\centering
+	\def\arraystretch{2.5}
+	\begin{tabular}{l|lll|l}
+		& Emperor Penguin & King Penguin & Gentoo Penguin & Total \\ \hline
+		Men & $\dfrac{120 \times 70}{200} = 42$ & $\dfrac{120 \times 60}{200} = 36$ & $\dfrac{120 \times 70}{200} = 42$ & 120 \\
+		Women & $\dfrac{80 \times 70}{200} = 28$ & $\dfrac{80 \times 60}{200} = 24$ & $\dfrac{80 \times 70}{200} = 28$ & 80 \\ \hline
+		Total & 70 & 60 & 70 & 200
+	\end{tabular}
+\end{table}
+
+Using the observed and expected counts, we can calculate the test statistic $\mathcal{X}^2$ as:
+\begin{align*}
+	\mathcal{X}^2 &= \sum \dfrac{(\text{Observed} - \text{Expected})^2}{\text{Expected}} \\
+	&= \dfrac{(50-42)^2}{42} + \dfrac{(30-36)^2}{36} + \dfrac{(40-42)^2}{42} + \dfrac{(20-28)^2}{28} + \dfrac{(30-24)^2}{24} + \dfrac{(30-28)^2}{28} \\
+	&= 6.5476
+\end{align*}
+where $df = (r-1)(c-1) = (2-1)(3-1) = 2$ ($r$ is number of rows and $c$ is number of columns). Make sure that you do NOT include ``Total''s when counting for $r$ and $c$.
+
+At the Chi-square distribution table, look at the row corresponding to $df = 2$. We can see that our Chi-square test statistic $\mathcal{X}^2 = 6.5476$ is between 5.99 and 7.38. Since the upper tail probability $p$ corresponding to $\mathcal{X}^2 = 5.99$ and $\mathcal{X}^2 = 7.38$ are 0.05 and 0.025, respectively, we can guess that the \textbf{upper} tail probability $p$ corresponding to our Chi-square test statistic $\mathcal{X}^2 = 6.5476$ is between 0.05 and 0.025. Since Chi-square tests are always one-sided, our P-value would be $0.025 <$ P-value $< 0.05$.
+
+\noindent \textbf{Step 4}: Our P-value was less than $\alpha = 0.05$. So we would reject the null hypothesis that preference on penguin species and member's gender are independent with the significance level of $\alpha = 0.05$.
+
+It means that we do have sufficient evidence to suggest that there is a relationship between preference on penguin species and member's gender.
+
+\pagebreak
+
+\begin{example} (\textit{The Chi-square test for goodness-of-fit}) \\
+	Suppose a seller from eBay is selling \$20 mystery boxes. The seller claims that 30\% of boxes come with items worth \$40, 40\% of boxes come with items worth \$20, and 30\% of boxes come empty (thus, worth \$0). Curious to test his luck, Mintaek spends his entire savings to buy 150 of those mystery boxes. A couple of weeks later, he receives all 150 boxes and obtains the following outcomes.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{l|lll|l}
+			Value of the box & \$40 & \$20 & \$0 & Total \\ \hline
+			Observed Count & 35 & 58 & 57 & 150
+		\end{tabular}
+	\end{table}
+	\vspace{-10pt}
+
+	Does the evidence suggest that the seller is a scammer and that Mintaek got ripped off? Use the appropriate statistical methods and set up the hypotheses that best match Mintaek's interests. Use the significance level of $\alpha = 0.05$.
+\end{example}
+
+This question is asking you to check if proportions in each category (proportions from Mintaek's purchase) are the same as a given set of proportions (eBay seller's claim). So we need to use the Chi-square test for goodness-of-fit. For more information, see the workbook page 216.
+
+\noindent \textbf{Step 1}: The hypotheses are:
+\vspace{-10pt}
+\begin{itemize}\itemsep-0.2em
+	\item $H_0$: The data are consistent with a specified distribution (the seller's claim).
+	\item $H_A$: The data are NOT consistent with a specified distribution (the seller's claim).
+\end{itemize}
+
+\noindent \textbf{Step 2}: Conditions are
+\vspace{-10pt}
+\begin{itemize}\itemsep-0.2em
+	\item \textbf{Assume} that the seller randomly selected 150 boxes from their inventory. We are assuming it because we don't know for sure if it is true.
+	\item We see that all of the cells are larger than 5 (35, 58, and 57).
+	\item Population size is at least 10 times the sample size (assuming the eBay seller has more than 1500 mystery boxes on their inventory).
+\end{itemize}
+
+\vspace{-10 pt}
+Since all conditions are met, we can use the Chi-square test for goodness-of-fit.
+
+\noindent \textbf{Step 3}: To calculate the test statistic $\mathcal{X}^2$, we first calculate the expected counts assuming the seller's claim is true. Remember that $n = 150$.
+
+\begin{table}[h]
+	\centering
+	\vspace{-5 pt}
+	\begin{tabular}{l|lll}
+		Value of the box & \$40 & \$20 & \$0 \\ \hline
+		Observed Count & 35 & 58 & 57 \\ \hline
+		Expected Count & $150 \times 0.3 = 45$ & $150 \times 0.4 = 60$ & $150 \times 0.3 = 45$
+	\end{tabular}
+\vspace{-5 pt}
+\end{table}
+
+\vspace{-10 pt}
+Using the observed and expected counts, we can calculate the test statistic $\mathcal{X}^2$ as:
+\[ \mathcal{X}^2 = \sum \dfrac{(\text{Observed} - \text{Expected})^2}{\text{Expected}} = \dfrac{(35-45)^2}{45} + \dfrac{(58-60)^2}{60} + \dfrac{(57-45)^2}{45} = 5.4889 \]
+where $df = c - 1 = 3 - 1 = 2$ ($c$ is number of columns).
+
+At the Chi-square distribution table, look at the row corresponding to $df = 2$. We can see that our Chi-square test statistic $\mathcal{X}^2 = 5.4889$ is between 4.61 and 5.99. Since the upper tail probability $p$ corresponding to $\mathcal{X}^2 = 4.67$ and $\mathcal{X}^2 = 5.99$ are 0.1 and 0.05, respectively, we can guess that the \textbf{upper} tail probability $p$ corresponding to our Chi-square test statistic $\mathcal{X}^2 = 5.4889$ is between 0.1 and 0.05. Since Chi-square tests are always one-sided, our P-value would be $0.05 <$ P-value $< 0.1$.
+
+\noindent \textbf{Step 4}: Our P-value was greater than $\alpha = 0.05$. So we would fail to reject the null hypothesis that the data are consistent with a specified distribution (the seller's claim) under the significance level of $\alpha = 0.05$.
+
+It means that we do not have sufficient evidence to suggest that the distribution of mystery boxes that Mintaek purchased are different from the eBay seller's claim.
+
+\pagebreak
+
+\begin{example} (\textit{The Chi-square test for homogeneity}) \\
+	Mintaek likes to watch birds in a park in his downtime. One day, he was curious on whether proportions of three birds (geese, ducks, and swans) are different between Julia Davis Park, Ann Morrison Park, and Esther Simplot Park. He watched a total of 600 birds in those three parks and counted how many of them were geese, ducks, and swans for each park. Assume that there are only three kinds of birds in those parks.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{l|lll|l}
+			& Geese & Ducks & Swans & Total \\ \hline
+			Julia Davis Park & 100 & 50 & 50 & 200 \\
+			Ann Morrison Park & 150 & 100 & 50 & 300 \\ 
+			Esther Simplot Park & 50 & 30 & 20 & 100 \\ \hline
+			Total & 300 & 180 & 120 & 600
+		\end{tabular}
+	\end{table}
+	
+	Does the evidence suggest that the proportions of those three birds are different between the Julia Davis Park, Ann Morrison Park, and Esther Simplot Park? Use the appropriate statistical methods and set up the hypotheses that best match Mintaek's interests. Use the significance level of $\alpha = 0.05$.
+\end{example}
+
+This question is asking you to check if proportions of birds are the same (or independent) between three parks. This set up is quite similar to the Example 7.1, except that there are three rows instead of two. In this case, we need to use the Chi-square test for homogeneity. For more information, see the workbook page 218.
+
+\noindent \textbf{Step 1}: The hypotheses are:
+\vspace{-10pt}
+\begin{itemize}\itemsep-0.2em
+	\item $H_0$: Corresponding categories occur in the same proportions in all groups (proportions of birds in Julia Davis Park,  proportions of birds in Ann Morrison Park, and proportions of birds in Esther Simplot Park are the same).
+	\item $H_A$: At least two corresponding proportions differ (at least two parks have different proportions of birds).
+\end{itemize}
+
+\noindent \textbf{Step 2}: Conditions are
+\vspace{-10pt}
+\begin{itemize}\itemsep-0.2em
+	\item \textbf{Assume} that the 600 birds Mintaek counted were selected randomly. We are assuming it because we don't know for sure if it is true.
+	\item We see that all of the cells are larger than 5 (100, 50, 50, 150, 100, 50, 50, 30, and 20).
+	\item Population size is at least 10 times the sample size (there are certainly more than 6000 of those birds in Boise).
+\end{itemize}
+
+Since all conditions are met, we can use the Chi-square test for homogeneity.
+
+\noindent \textbf{Step 3}: To calculate the test statistic $\mathcal{X}^2$, we first calculate the expected counts using row totals and column totals. Equation for the expected counts is: \[ \text{Expected Counts} = \dfrac{\text{Row Total} \times \text{Column Total}}{\text{Grand Total}} \]
+
+We then find the expected counts as:
+
+\begin{table}[H]
+	\centering
+	\def\arraystretch{2.5}
+	\begin{tabular}{l|lll|l}
+		& Geese & Ducks & Swans & Total \\ \hline
+		Julia Davis Park & $\dfrac{200 \times 300}{600} = 100$ & $\dfrac{200 \times 180}{600} = 60$ & $\dfrac{200 \times 120}{600} = 40$ & 200 \\
+		Ann Morrison Park & $\dfrac{300 \times 300}{600} = 150$ & $\dfrac{300 \times 180}{600} = 90$ & $\dfrac{300 \times 120}{600} = 60$ & 300 \\
+ 		Esther Simplot Park & $\dfrac{100 \times 300}{600} = 50$ & $\dfrac{100 \times 180}{600} = 30$ & $\dfrac{100 \times 120}{600} = 20$ & 100 \\ \hline
+		Total & 300 & 180 & 120 & 500
+	\end{tabular}
+\end{table}
+
+Using the observed counts and expected counts, we can calculate the test statistic $\mathcal{X}^2$ as:
+\begin{align*}
+\mathcal{X}^2 &= \sum \dfrac{(\text{Observed} - \text{Expected})^2}{\text{Expected}} \\
+&= \dfrac{(100-100)^2}{100} + \dfrac{(50-60)^2}{60} + \dfrac{(50-40)^2}{40} + \dfrac{(150-150)^2}{150} + \dfrac{(100-90)^2}{90} + \dfrac{(50-60)^2}{60} \\
+&\phantom{=} + \dfrac{(50-50)^2}{50} + \dfrac{(30-30)^2}{30} + \dfrac{(20-20)^2}{20} \\
+&= 6.9444
+\end{align*}
+where $df = (r-1)(c-1) = (3-1)(3-1) = 4$ ($r$ is number of rows and $c$ is number of columns). Make sure that you do NOT include totals in $r$ and $c$.
+
+At the Chi-square distribution table, look at the row corresponding to $df = 4$. We can see that our Chi-square test statistic $\mathcal{X}^2 = 6.9444$ is between 6.74 and 7.78. Since the upper tail probability $p$ corresponding to $\mathcal{X}^2 = 6.74$ and $\mathcal{X}^2 = 7.78$ are 0.15 and 0.10, respectively, we can guess that the \textbf{upper} tail probability $p$ corresponding to our Chi-square test statistic $\mathcal{X}^2 = 6.9444$ is between 0.15 and 0.10. Since Chi-square tests are always one-sided, our P-value would be $0.10 <$ P-value $< 0.15$.
+
+\noindent \textbf{Step 4}: Our P-value was greater than $\alpha = 0.05$. So we would fail to reject the null hypothesis that corresponding categories occur in the same proportions in all groups (proportions of birds in Julia Davis Park, proportions of birds in Ann Morrison Park, and proportions of birds in Esther Simplot Park are the same) under the significance level of $\alpha = 0.05$.
+
+It means that we do not have sufficient evidence to suggest that at least two parks have different proportions of birds. Our results indicate proportions of geese, duck, and swan are the same across Julia Davis Park, Ann Morrison Park, and Esther Simplot Park.
+\end{document}

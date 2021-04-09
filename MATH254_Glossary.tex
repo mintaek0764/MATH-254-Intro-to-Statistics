@@ -1,0 +1,176 @@
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools}
+\usepackage{multirow,url}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   	\framebox{
+   		\vbox{\vspace{2mm}
+   			\hbox to 6.28in { {\bf MATH 254: Introduction to Statistics
+   					\hfill #3} }
+   			\vspace{4mm}
+   			\hbox to 6.28in { {\Large \hfill #2  \hfill} }
+   			\vspace{2mm}
+   			\hbox to 6.28in { {\hfill Corresponding Workbook Modules: #4} }
+   			\vspace{2mm}}
+   	}
+   \end{center}
+   \markboth{Lesson #1}{Lesson #1}
+
+   %{\bf Note}: {\it LaTeX template courtesy of UC Berkeley EECS dept.}
+
+   %{\bf Disclaimer}: {\it These notes have not been subjected to the usual scrutiny reserved for formal publications.  They may be distributed outside this class only with the permission of the instructor.}
+   %\vspace*{4mm}
+   \vspace*{-4mm}
+}
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{example}{Example}[lecnum]
+\newtheorem{exercise}{Exercise}[lecnum]
+
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{definition}[theorem]{Definition}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+
+\begin{document}
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{0}{Glossary of Statistical Terms}{Mintaek Lee}{3 -- 6}
+%\footnotetext{These notes are partially based on those of Nigel Mansell.}
+
+% **** YOUR NOTES GO HERE:
+
+\noindent \textbf{FOR EXAM 2:}
+
+\noindent Following terms are usually associated with hypothesis testing and/or confidence intervals for both means and proportions.
+\vspace{-3mm}
+\begin{itemize}\itemsep0em
+	\item $H_0$: null hypothesis (always has `$=$' sign, like $\mu = 10$)
+	\item $H_A$: alternative hypothesis (has `$\neq$', `$<$', or `$>$' sign based on problems, like $\mu > 10$)
+	\item $\alpha$: significance level (for hypothesis testing), usually $\alpha = 0.01$ or $0.05$, but it can vary
+	\item $z$: z-test statistic (calculate it using values like: $n$, $\sigma$, etc.)
+	\item $t$: t-test statistic (calculate it using values like: $n$, $s$, etc.)
+	\item $d.f.$: degrees of freedom (only used for t). For one-sample and paired two sample, it is $n-1$. For independent two-sample (not paired), it is $\min\{n_1 - 1, n_2 - 1\}$.
+	\item $z^*$: z critical value (used in the z-confidence interval, find it from the t table)
+	\item $t^*$: t critical value (used in the t-confidence interval, find it from the t table)
+	\item $m$: margin of error (the one to the right of `$\pm$' in the confidence interval)
+\end{itemize}
+
+\noindent Following terms are usually associated with inference for a single mean (Module 3).
+\vspace{-3mm}
+\begin{itemize} \itemsep0em
+	\item $N$: population size
+	\item $n$: sample size
+	\item $\mu$: population mean
+	\item $\mu_0$: hypothesized population mean for hypothesis testing (values from hypotheses)
+	\item $\bar{x}$: sample mean
+	\item $\sigma$: population standard deviation (if known, use $z$. otherwise, use $t$.)
+	\item $s$: sample standard deviation (calculate it from sample)
+\end{itemize}
+
+\noindent Following terms are usually associated with inference for a single proportion (Module 4).
+\vspace{-3mm}
+\begin{itemize}\itemsep0em
+	\item $p$: population proportion
+	\item $\hat{p}$: sample proportion $\left( \dfrac{x}{n} \right)$ where $x$ is the number of successes.
+	\item $p_0$: hypothesized population proportion for hypothesis testing (values from hypotheses)
+	\item $p^*$: given population proportion for the sample size calculation for a desired margin of error (usually one of 0.5, $p_0$, or $p$ from the context. it depends on problems)
+\end{itemize}
+
+\pagebreak
+
+\noindent \textbf{FOR EXAM 3:}
+
+\noindent Note that $n$, $\mu$, $\bar{x}$, $\sigma$, and $s$ can have subscripts for two-sample means cases (Activity 5-1).
+\vspace{-3mm}
+\begin{itemize}\itemsep0em
+	\item If they have $1$ or $2$ as subscripts, it means they are for the two independent groups. For example, $\mu_1$ and $\mu_2$ would be the population means of first and second group.
+	\item If they have $D$ as subscripts, it means they are for the paired (dependent) groups. For example, $\bar{x}_D$ would be the sample mean of differences of observations between two paired groups.
+	\item For definitions of $n$, $\mu$, $\bar{x}$, $\sigma$, and $s$, see the front page.
+\end{itemize}
+
+\noindent Following terms are usually associated with two-sample proportions cases (Activity 5-3).
+\vspace{-3mm}
+\begin{itemize}\itemsep0em
+	\item $p_1$: population proportion for the first group
+	\item $p_2$: population proportion for the second group
+	\item $\hat{p}_1$: sample proportion for the first group $( \frac{x_1}{n_1} )$
+	\item $\hat{p}_2$: sample proportion for the second group $( \frac{x_2}{n_2} )$
+	\item $\hat{p}$: pooled sample proportion $( \frac{x_1 + x_2}{n_1 + n_2} )$ (used only in the hypothesis testing. notice that this is not the same as $\hat{p}$ from the one sample proportion cases)
+\end{itemize}
+
+\noindent Following terms are associated with regressions (Module 6).
+\vspace{-3mm}
+\begin{itemize}\itemsep0em
+	\item $x$: the explanatory (or independent) variable
+	\item $y$: the observed response (or dependent) variable (obtained from the data)
+	\item $\hat{y}$: the predicted response variable (calculated from the regression model)
+	\item $y - \hat{y}$: residual (the vertical distance between $y$ and $\hat{y}$)
+	\item $\beta_0$: population slope of the regression line (usually unknown)
+	\item $\beta_1$: population y-intercept of the regression line (usually unknown)
+	\item $b_0$: sample slope of the regression line
+	\item $b_1$: sample y-intercept of the regression line (\textit{Excel outputs under ``\textit{Coefficients}'' give both $b_0$ and $b_1$})
+	\item $r$: correlation coefficient, measures the strength and direction of a linear relationship (see workbook page 148 for more information) (\textit{Excel output ``Multiple R'' is the same as $|r|$, but be careful when $r < 0$!})
+	\item $r^2$: r squared, interpretation of this is: the percent of variation in $y$ that is due to (or explained by) the variation in $x$. (\textit{Excel output ``R Square'' is the same as $r^2$})
+\end{itemize}
+
+\end{document}
